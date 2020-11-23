@@ -23,27 +23,25 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.red[100],
-      appBar: AppBar(
-        backgroundColor: Colors.red,
-        title: Text('Register'),
-        actions: <Widget>[
-          FlatButton.icon(
-            icon: Icon(Icons.person_outline),
-            label: Text('Sign In'),
-            onPressed: () => widget.toggleAuthView,
-          )
-        ],
-      ),
+      backgroundColor: Colors.amber,
       body: Form(
         key: _formKey,
         child: Column(
           children: <Widget>[
             Container(
+              margin: const EdgeInsets.symmetric(vertical:50.0),
+              child: Text('Welcome to me-n-u!', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),),
+            ),
+            Container(
               margin: EdgeInsets.all(10),
               child:
               TextFormField(
-                decoration: InputDecoration(hintText: 'email'),
+                decoration: InputDecoration(
+                    hintText: 'email',
+                    fillColor: Colors.white,
+                    filled: true,
+                    enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.white, width: 2))
+                ),
                 validator: (val) => val.contains('@') && val.isNotEmpty ? null : 'Must be a valid email address',
                 onChanged: (val){
                   setState(() {
@@ -55,7 +53,12 @@ class _RegisterState extends State<Register> {
             Container(
               margin: EdgeInsets.all(10),
               child: TextFormField(
-                decoration: InputDecoration(hintText: 'password'),
+                decoration: InputDecoration(
+                    hintText: 'password',
+                    fillColor: Colors.white,
+                    filled: true,
+                    enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.white, width: 2))
+                ),
                 validator: (val) => val.length >= 6 ? null : 'Password must be at least 6 characters',
                 obscureText: true,
                 onChanged: (val){
@@ -87,6 +90,11 @@ class _RegisterState extends State<Register> {
                 fontSize: 12,
                 color: Colors.red,
               ),
+            ),
+            Text('or'),
+            RaisedButton(
+              child: Text('Sign In'),
+              onPressed: () => widget.toggleAuthView(),
             ),
           ],
         ),

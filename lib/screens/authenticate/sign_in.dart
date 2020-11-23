@@ -23,22 +23,16 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.red[100],
-      appBar: AppBar(
-        backgroundColor: Colors.red,
-        title: Text('Sign In'),
-        actions: <Widget>[
-          FlatButton.icon(
-            icon: Icon(Icons.person_outline),
-            label: Text('Register'),
-            onPressed: () => widget.toggleAuthView(),
-          )
-        ],
-      ),
+      backgroundColor: Colors.amber,
       body: Form(
         key: _formKey,
         child: Column(
           children: <Widget>[
+            Container(
+                height: 200,
+                width: 300,
+                margin: new EdgeInsets.only(top: 100.0, bottom: 20.0),
+                child: Image.asset('assets/images/fake-logo.jpg')),
             Container(
               margin: EdgeInsets.all(10),
               child:
@@ -97,6 +91,11 @@ class _SignInState extends State<SignIn> {
                 color: Colors.red,
                 fontSize: 12,
               ),
+            ),
+            Text('or'),
+            RaisedButton(
+              child: Text('Register'),
+              onPressed: () => widget.toggleAuthView(),
             ),
           ],
         ),
